@@ -1,0 +1,20 @@
+﻿@model EmpresaModel
+@{
+    ViewData["Title"] = "Registrar Empresa";
+}
+
+<h2>Registrar Empresa</h2>
+
+<form asp-controller="Empresa" asp-action="RegistrarEmpresa">
+    <div class="form-group">
+        <label for="NomeEmpresa">Empresa: </label>
+        <input type="text" class="form-control" asp-for="NomeEmpresa" />
+        <span asp-validation-for="NomeEmpresa" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="CNPJ">CNPJ: </label>
+        <input type="text" class="form-control" asp-for="CNPJ" />
+        <span asp-validation-for="CNPJ" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-block btn-success">Registrar</button>
+</form>

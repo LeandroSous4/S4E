@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewData["Title"] = "Empresas";
+}
+
+<h2>Empresas</h2>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>#</th>
+            <th>ID</th>
+            <th>Nome da Empresa</th>
+            <th>CNPJ</th>
+        </tr>
+    </thead>
+
+    @{
+        foreach (var item in (List<EmpresaModel>)ViewBag.ListaEmpresa)
+        {
+            <tbody>
+                <tr>
+                    <td><button type="button" class="btn btn-primary" onclick="EditarEmpresa(@item.idEmpresa.ToString())">Editar</button></td>
+                    <td><button type="button" class="btn btn-danger" onclick="ExcluirEmpresa(@item.idEmpresa.ToString())">Excluir</button></td>
+                    <td>@item.idEmpresa.ToString()</td>
+                    <td>@item.NomeEmpresa.ToString()</td>
+                    <td>@item.CNPJ.ToString()</td>
+                </tr>
+            </tbody>
+        }
+    }
+
+</table>
+<p>**Clique em editar para criar relações com Associados</p>
+<button type="button" class="btn btn-block btn-primary" onclick="RegistrarEmpresa()">Registrar Empresa</button>
+
+<script>
+    function RegistrarEmpresa() {
+        window.location.href = "../Empresa/RegistrarEmpresa";
+    }
+    function ExcluirEmpresa(id) {
+        window.location.href = "../Empresa/ExcluirEmpresa/" + id;
+    }
+    function EditarEmpresa(id) {
+        window.location.href = "../Empresa/EditarEmpresa/" + id;
+    }
+</script>

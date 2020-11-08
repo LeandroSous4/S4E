@@ -1,0 +1,32 @@
+﻿@model AssociacaoModel
+@{
+    ViewData["Title"] = "CriarRelacao";
+}
+
+<h2>Criar Relacao</h2>
+
+<form asp-controller="Associacao" asp-action="RegistrarAssociacao">
+    <div class="form-group">
+        <label>Empresa:</label>
+        <select asp-for="idEmpresa" class="form-control">
+            @{
+                foreach (var item in (List<EmpresaModel>)ViewBag.ListaEmpresa)
+                {
+                    <option selected value="@item.idEmpresa.ToString()">@item.NomeEmpresa.ToString()</option>
+                }
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Associado:</label>
+        <select asp-for="idAssociado" class="form-control">
+            @{
+                foreach (var item in (List<AssociadoModel>)ViewBag.ListaAssociado)
+                {
+                    <option selected value="@item.idAssociado.ToString()">@item.NomeAssociado.ToString()</option>
+                }
+            }
+        </select>
+    </div>
+    <button type="submit" class="btn btn-block btn-success">Registrar</button>
+</form>

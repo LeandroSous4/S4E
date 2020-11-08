@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewData["Title"] = "Associados";
+}
+
+<h2>Associados</h2>
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>#</th>
+            <th>ID</th>
+            <th>Nome do Associado</th>
+            <th>CPF</th>
+            <th>Data de Nascimento</th>
+        </tr>
+    </thead>
+
+    @{
+        foreach (var item in (List<AssociadoModel>)ViewBag.ListaAssociado)
+        {
+            <tbody>
+                <tr>
+                    <td><button type="button" class="btn btn-primary" onclick="EditarAssociado(@item.idAssociado.ToString())">Editar</button></td>
+                    <td><button type="button" class="btn btn-danger" onclick="ExcluirAssociado(@item.idAssociado.ToString())">Excluir</button></td>
+                    <td>@item.idAssociado.ToString()</td>
+                    <td>@item.NomeAssociado.ToString()</td>
+                    <td>@item.CPF.ToString()</td>
+                    <td>@item.DataNascimento.ToString()</td>
+                </tr>
+            </tbody>
+        }
+    }
+
+</table>
+<p>**Clique em editar para criar relações com Empresas</p>
+
+<button type="button" class="btn btn-block btn-primary" onclick="RegistrarAssociado()">Registrar Associado</button>
+
+<script>
+    function RegistrarAssociado() {
+        window.location.href = "../Associado/RegistrarAssociado";
+    }
+    function ExcluirAssociado(id) {
+        window.location.href = "../Associado/ExcluirAssociado/" + id;
+    }
+    function EditarAssociado(id) {
+        window.location.href = "../Associado/EditarAssociado/" + id;
+    }
+</script>
